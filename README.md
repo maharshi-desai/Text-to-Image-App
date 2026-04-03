@@ -1,16 +1,80 @@
-# React + Vite
+# AI Text-to-Image Generator 🎨✨
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive, and minimalist web application that generates high-quality images from text descriptions using the power of Generative AI. 
 
-Currently, two official plugins are available:
+> **Note:** This project was developed as a college assignment focusing on Frontend Development, API Integration, and modern Web UI/UX design principles.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 🚀 Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Text-to-Image Generation:** Transform any descriptive text prompt into a stunning visual image in seconds.
+- **Powered by FLUX.1 (Hugging Face):** Utilizes the `black-forest-labs/FLUX.1-schnell` model via the Hugging Face Inference API for fast and highly accurate image generation.
+- **Modern UI/UX:** Built with a premium "glassmorphism" aesthetic, animated background gradients, and smooth loading states.
+- **Real-Time Status Indicators:** Visual feedback and progress tracking while the AI model loads and generates the image.
+- **Responsive Design:** Fully fluid layout that works seamlessly across desktop, tablet, and mobile devices.
+- **One-Click Download:** Save the generated creations directly to your local device.
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Frontend Framework:** React 18
+- **Build Tool:** Vite
+- **Styling:** Vanilla CSS (CSS3 with Flexbox, CSS Variables, and Animations)
+- **API Integration:** Hugging Face Inference API (Fetch API)
+
+## 📋 Prerequisites
+
+Before running the project locally, ensure you have the following installed:
+
+- [Node.js](https://nodejs.org/en/) (v16.0 or higher)
+- [npm](https://www.npmjs.com/) (usually comes with Node.js)
+- A **Hugging Face API Token** (You can generate one for free by creating an account at [Hugging Face](https://huggingface.co/))
+
+## ⚙️ Local Setup and Installation
+
+Follow these steps to run the application on your local machine:
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/maharshi-desai/Text-to-Image-App.git
+   cd Text-to-Image-App
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Configure Environment Variables:**
+   - Create a file named `.env` in the root directory.
+   - Add your Hugging Face API token in the following format:
+     ```env
+     VITE_HF_TOKEN=your_hugging_face_token_here
+     ```
+
+4. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
+
+5. **Open your browser:**
+   Navigate to `http://localhost:5173` to see the app in action!
+
+## 💡 How it Works
+
+1. **Proxy Server:** The Vite development server is configured with a proxy (`/hf-api`) to securely route requests to the Hugging Face router, bypassing complex Cross-Origin Resource Sharing (CORS) restrictions.
+2. **Retry Logic:** If the AI model is "asleep" or warming up, the application intercepts the HTTP 503 error, waits the estimated time provided by the API, and smartly retries the request without failing abruptly.
+3. **Blob Conversion:** Once the AI responds with an image blob, the React frontend converts it into a structured `Object URL` and dynamically renders the image frame.
+
+## 🎓 College Project Context
+
+This application was developed to demonstrate practical understanding of key web development concepts:
+- Handling asynchronous JavaScript operations (`Promises`, `async/await`).
+- Managing complex React component states (`useState`).
+- Implementing graceful error handling and retry mechanisms.
+- Securing API tokens using environment variables (`.env`).
+- Writing clean, modular, and maintainable styles without relying on heavy external UI frameworks.
+
+---
+
+*Designed and developed by Maharshi Desai.*
