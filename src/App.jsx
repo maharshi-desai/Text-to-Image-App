@@ -5,7 +5,7 @@ import './App.css'
 const MODEL = 'black-forest-labs/FLUX.1-schnell'
 const HF_TOKEN = import.meta.env.VITE_HF_TOKEN
 
-const API_URL = `/hf-api/hf-inference/models/${MODEL}`
+const API_URL = `https://router.huggingface.co/hf-inference/models/${MODEL}`
 
 async function generateImageFromPrompt(prompt, onStatus) {
   if (!HF_TOKEN) {
